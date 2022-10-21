@@ -6,9 +6,8 @@
 
 ![image](https://user-images.githubusercontent.com/108952834/197258955-225aea2c-d9c1-4bf2-a754-daf016d55e66.png)
 
-i may upload my nofetch config in future /_\
-
-
+ i may upload my nofetch config in future /_\
+- install
 ```
 Set-ExecutionPolicy Bypass -Scope CurrentUser -Force
 irm https://github.com/omaru-ok/stuff/raw/main/WINDOW_terminal_UwU_0/OMI-window-terminal_conf-install.ps1 | iex
@@ -21,6 +20,7 @@ just remove the everythign form ur `setting.json` at window-terminal
 **it is going to delted ur old profile if exist as powershell.conf**
   ![image](https://user-images.githubusercontent.com/108952834/197257791-7f178a7e-9a02-421d-be23-b2ddba7c63f4.png)
   
+  - install
   ```
   irm https://github.com/omaru-ok/stuff/raw/main/powershell_conf_install_OwO/OMI-powershell%20-%20conf-%20installer.ps1 | iex
   ```
