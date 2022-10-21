@@ -33,7 +33,7 @@ write-host "												⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿�
 if (!(Test-Path -Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force } 
 write-host "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ┏ (゜ω゜)=👉  its me omi  CAN U SEE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" 	-ForegroundColor Blue
 
-if ((Test-Path -Path $PROFILE)) { irm https://github.com/omaru-ok/stuff/raw/main/Power_shell_conf_by_Omi.txt > $profile } 
+if ((Test-Path -Path $PROFILE)) { irm https://github.com/omaru-ok/stuff/raw/main/powershell_conf_install_OwO/Power_shell_conf_by_Omi.txt > $profile } 
 if (!(Test-Path -path ~/scoop )) { irm get.scoop.sh | iex }
 write-host  "ayoo, omi is dumb lol"  -ForegroundColor Red
 
