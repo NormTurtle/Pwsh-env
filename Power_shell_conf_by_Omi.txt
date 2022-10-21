@@ -1,6 +1,6 @@
 
 
-# CONFIG_BY_OMI :) 
+# CONFIG_BY_OMI :)  HEHE
 
 #importFirst Modules
 Import-Module PSFzf
