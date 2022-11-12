@@ -44,7 +44,9 @@ write-host  "_________________________________________________________(👉ﾟ�
 scoop bucket add extras 
 scoop bucket add extras 
 
-scoop install ugrep lsd starship scoop-completion fzf
+scoop install ugrep lsd starship scoop-completion fzf altsnap
+cd $home\scoop\apps\altsnap\current && Invoke-RestMethod https://github.com/omaru-ok/stuff/raw/main/Othere_conf_:O/Alt_snap/AltSnap.ini  -o  AltSnap.ini
+altsnap & 
 write-host  "____________________________________________________________________________________________________________✍️(◔◡◔) SOME APPS are installed <3 omi " 	-ForegroundColor Blue
 
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
