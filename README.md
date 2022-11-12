@@ -21,6 +21,7 @@ just remove the everythign form ur `setting.json` at window-terminal
   ![image](https://user-images.githubusercontent.com/108952834/197257791-7f178a7e-9a02-421d-be23-b2ddba7c63f4.png)
   
   - install
+  **This is script is mean't to be running on widnow-Terminal when `FUll-screened` press `ALT+ENTER` get that**
   ```
   irm https://github.com/omaru-ok/stuff/raw/main/powershell_conf_install_OwO/OMI-powershell%20-%20conf-%20installer.ps1 | iex
   ```
