@@ -13,8 +13,9 @@ Set-ExecutionPolicy Bypass -Scope CurrentUser -Force
 irm https://github.com/omaru-ok/stuff/raw/main/WINDOW_terminal_UwU_0/OMI-window-terminal_conf-install.ps1 | iex
 ```
 - uninstall
-press `CTRL+shift+,` to open up `settign.json`
-just remove the everythign form ur `setting.json` at window-terminal to uninstall the script
+ 
+ press `CTRL+shift+,` to open up `settign.json`
+ just remove the everythign form ur `setting.json` at window-terminal to uninstall the script
 
 # powershell 
 
