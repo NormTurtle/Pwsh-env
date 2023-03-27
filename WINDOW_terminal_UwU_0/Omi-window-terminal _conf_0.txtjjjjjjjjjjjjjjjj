@@ -144,8 +144,8 @@
     "experimental.rendering.forceFullRepaint": false,
     "firstWindowPreference": "defaultProfile",
     "focusFollowMouse": true,
-    "initialCols": 112,
-    "initialRows": 23,
+    "initialCols": 77,
+    "initialRows": 17,
     "launchMode": "focus",
     "minimizeToNotificationArea": true,
     "profiles": 
@@ -156,7 +156,7 @@
             "altGrAliasing": false,
             "antialiasingMode": "cleartype",
             "bellStyle": "none",
-            "colorScheme": "Gruvbox-Material Soft Dark",
+            "colorScheme": "Aura Soft Dark (Soft Text)",
             "cursorShape": "emptyBox",
             "font": 
             {
