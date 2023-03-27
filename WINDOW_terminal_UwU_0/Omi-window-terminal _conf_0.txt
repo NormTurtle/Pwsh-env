@@ -178,7 +178,7 @@
                 "name": "Command Prompt"
             },
             {
-                "commandline": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.3.3.0_x64__8wekyb3d8bbwe\\pwsh.exe  -nologo",
+                "commandline": "pwsh.exe  -nologo",
                 "font": 
                 {
                     "size": 14.0
