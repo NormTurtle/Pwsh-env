@@ -4,15 +4,15 @@
     "actions": 
     [
         {
+            "command": "breakIntoDebugger"
+        },
+        {
             "command": 
             {
                 "action": "copy",
                 "singleLine": false
             },
             "keys": "ctrl+c"
-        },
-        {
-            "command": "breakIntoDebugger"
         },
         {
             "command": "toggleAlwaysOnTop",
@@ -23,8 +23,15 @@
             "keys": "ctrl+v"
         },
         {
-            "command": "scrollUpPage",
-            "keys": "ctrl+shift+u"
+            "command": 
+            {
+                "action": "scrollDown"
+            },
+            "keys": "ctrl+shift+j"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -34,15 +41,8 @@
             "keys": "ctrl+alt+t"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
-                "action": "scrollDown"
-            },
-            "keys": "ctrl+shift+j"
+            "command": "scrollUpPage",
+            "keys": "ctrl+shift+u"
         },
         {
             "command": 
