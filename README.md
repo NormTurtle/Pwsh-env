@@ -1,5 +1,6 @@
-# stuff?  sss
 
+## its just ** POWERSHELL-DEVLOPER-ENVIROMENT**
+### Pwsh-env?  sss
 **i store my configs there :D**
 
 # Window-Terminal 
