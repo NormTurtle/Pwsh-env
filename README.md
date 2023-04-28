@@ -1,5 +1,5 @@
-
-## its just ** POWERSHELL-DEVLOPER-ENVIROMENT**
+⚠⚠️ Breaking changes, ! im LAzy ⚠️
+ ## its just ** POWERSHELL-DEVLOPER-ENVIROMENT**
 ### Pwsh-env?  sss
 **i store my configs there :D**
 
