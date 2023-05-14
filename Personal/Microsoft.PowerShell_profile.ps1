@@ -1,54 +1,69 @@
-# CONFIG_BY_OMI :) 
+ # CONFIG_BY_OMI :)
 #importFirst Modules
 Import-Module PSFzf
 Import-Module PSReadLine
+Import-Module gsudoModule
 Import-Module Terminal-Icons
-Invoke-Expression (&starship init powershell)  
+Invoke-Expression (&starship init powershell)
 Import-Module "~\scoop\modules\scoop-completion"
-#oh-my-posh init pwsh --config ~\scoop\apps\oh-my-posh\current\themes\pure.omp.json | iex 
-# Enviroment variables
-#$env:XDG_CONFIG_HOME="C:\Users\O_0\.config\"
-$env:ERDTREE_CONFIG_PATH="~/.config/erdtree/.erdtreerc"
-$EDITOR='nvim.exe'
-Set-Alias -Name oldvim -Value vim
-Set-Alias -Name vim -Value $EDITOR
-#Set-Alias -Name vim -Value nvim
-Set-Alias -Name nvide -Value neovide  
-#Set-Alias -Name note -Value notepads
-Set-Alias -Name mvp -Value mpv
-Set-Alias -Name mcube -Value musikcube
-Set-alias -Name brew -Value scoop 
-Set-Alias -Name ll -Value  lsd
-Set-Alias -Name get -Value  wget
-Set-Alias -Name yt -Value  yt-dlp
-Set-Alias -Name which -Value Get-Command 
-Set-Alias -Name sd -Value speedtest 
-Set-Alias -Name cow  -Value cowsay
-#Set-Alias less ~\apps\git\current\usr\bin\less.exe'
-# PsReadLine
-Set-PSReadLineOption -EditMode Windows
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle InlineView
-Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Invoke-Expression (&sfsu hook) # replace the scoop
+# portal completion powershell | Out-String | Invoke-Expression
+# oh-my-posh init pwsh --config ~\scoop\apps\oh-my-posh\current\themes\pure.omp.json | iex
 
-# PsFZF 
-# replace 'Ctrl+t' and 'Ctrl+r' with your preferred bindings:
+# Set Env:variables in shell
+#$ [Environment]::SetEnvironmentVariable("VARIABLE", "Value", "User")
+# E.g [Environment]::SetEnvironmentVariable("NEOVIDE_MULTIGRID", "1", "User")
+
+# Enviroment variables also for VI
+# $env:OPENAI_API_KEY='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'
+# komorebi
+$Env:KOMOREBI_CONFIG_HOME = "$Env:USERPROFILE\.config\komorebi"
+# NVIM
+$env:XDG_CONFIG_HOME="$Env:USERPROFILE\.config"
+$env:XDG_STATE_HOME="$Env:USERPROFILE\.cache"
+$env:XDG_STATE_DIR="$Env:USERPROFILE\.cache"
+$env:XDG_DATA_HOME="$Env:USERPROFILE\.cache"
+$env:MANGAL_CONFIG_PATH= "C:\Users\O_0\.config\mangal\"
+# $env:NEOVIDE_FRAME="none" # remove bar and title buttons
+# $env:NEOVIDE_MULTIGRID=1 # use animation of windows & scroll
+$env:EDITOR = 'neovide.exe'
+$env:PAGER = 'bat'
+$EDITOR='neovide.exe'
+Set-Alias -Name vim -Value $EDITOR
+Set-Alias -Name ivm -Value $EDITOR
+Set-Alias -Name nvide -Value neovide
+Set-Alias -Name vide -Value neovide
+Set-Alias -Name mvp -Value mpv
+Set-Alias -Name et -Value erd.exe
+Set-Alias -Name mcube -Value musikcube
+Set-Alias -Name lolcat -Value rainbow
+Set-alias -Name brew -Value scoop
+Set-Alias -Name ll -Value  lsd
+Set-Alias -Name yt -Value  yt-dlp
+Set-Alias -Name which -Value Get-Command
+Set-Alias -Name sd -Value speedtest
+Set-Alias -Name tpgt -Value tgpt
+Set-Alias -Name cow  -Value cowsay
+Set-Alias -Name sudo -Value gsudo
+Set-Alias -Name stream -Value streamlink
+# PsFZF
+# replace 'Ctrl+t' and 'Ctrl+r' with your preferred bi  ndings:
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 # example command - use $Location with a different command:
 $commandOverride = [ScriptBlock]{ param($Location) Write-Host $Location }
 # pass your override to PSFzf:
 Set-PsFzfOption -AltCCommand $commandOverride
 
+# how to make [[ symblinks? ]]
+# New-Item -ItemType SymbolicLink -Path  "C:\Users\path_new_dest"  -Target  "C:\Users\O_0\target_path"
 #Function
+Function note {Start-Process notepads $args -NoNewWindow}
+Function get  {xh -d $args}
 Function mpe {~/scoop/apps/mpv/current/mpv.com $args}
 Function mvi {mpv --config-dir="C:\Users\O_0\scoop\apps\mpv-git\current\portable_config\mvi" $args }
-Function note {Start-Process notepads -ArgumenstList $args -NoNewWindow}
-#function mpd { mpd .\.config\mpd\mpd.conf -v & } 
 function gdi  { goodbyedpi & }
+Function hosts {gsudo nvim %windir%\system32\drivers\etc\hosts}
+
 #Function convert($cmd) {magick convert $cmd }
 # change dir fastly :D
 Function ..   { cd ..\ }
@@ -62,43 +77,87 @@ function Env: { Set-Location Env: } 	# Drive shortcuts
 function pgrep($name) { ps $name}    # get runnig process info
 function pkill($name) { ps $name -ErrorAction SilentlyContinue | kill }  # kill any runnign process
 function df { get-volume } # get disk usage
-Function ip { (Invoke-WebRequest http://ifconfig.me/ip ).Content} # get *ONLY* IP 
-Function ipinfo { (curl http://ipinfo.io)} # get full info of IP 
-function unzip {Expand-Archive }   # unzip fliles from  without needing to install anythign 
-function reload-profile {
-    & $profile -Force
-}
-function touch($file) { "" | Out-File $file -Encoding ASCII }
+Function ip { (Invoke-WebRequest http://ifconfig.me/ip ).Content} # get *ONLY* IP
+Function ipinfo { (curl http://ipinfo.io)} # get full info of IP
+function unzip {Expand-Archive }   # unzip fliles from  without needing to install anythign
+function reload-profile { & $profile -Force }
 
-# Compute file hashes - useful for checking successful downloads 
-function md5    { Get-FileHash -Algorithm MD5 $args }
+# PsReadLine
+Set-PSReadLineOption -EditMode Windows
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle InlineView
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key Ctrl+C -Function Copy
+Set-PSReadLineKeyHandler -Key Ctrl+v -Function Paste
 
-# downlading yt-dlp with 3gp 
-#Function yt3gp ($url) { yt-dlp -a "${url}"  -o "%(title)s.%(ext)s" --exec 'ffmpeg -y -i {} -filter:v "scale=704x576" -c:v h263 -c:a aac -b:a 80k -ac 1 -ar 8000 {}.3gp && del /f {}' }
-Function yt3gp {
-    $urls = Get-Content -Path "urls.txt"
-    foreach ($url in $urls) {
-        yt-dlp -a "$url" -o "%(title)s.%(ext)s" --exec 'ffmpeg -y -i {} -filter:v "scale=704x576" -c:v h263 -c:a aac -b:a 80k -ar 8000 {}.3gp && del /f {}'
+# Each time you press Alt+', this key handler will change the token
+# under or before the cursor.  It will cycle through single quotes, double quotes, or
+# no quotes each time it is invoked.
+Set-PSReadLineKeyHandler -Key "Alt+'" `
+                         -BriefDescription ToggleQuoteArgument `
+                         -LongDescription "Toggle quotes on the argument under the cursor" `
+                         -ScriptBlock {
+    param($key, $arg)
+
+    $ast = $null
+    $tokens = $null
+    $errors = $null
+    $cursor = $null
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$ast, [ref]$tokens, [ref]$errors, [ref]$cursor)
+
+    $tokenToChange = $null
+    foreach ($token in $tokens)
+    {
+        $extent = $token.Extent
+        if ($extent.StartOffset -le $cursor -and $extent.EndOffset -ge $cursor)
+        {
+            $tokenToChange = $token
+
+            # If the cursor is at the end (it's really 1 past the end) of the previous token,
+            # we only want to change the previous token if there is no token under the cursor
+            if ($extent.EndOffset -eq $cursor -and $foreach.MoveNext())
+            {
+                $nextToken = $foreach.Current
+                if ($nextToken.Extent.StartOffset -eq $cursor)
+                {
+                    $tokenToChange = $nextToken
+                }
+            }
+            break
+        }
+    }
+
+    if ($tokenToChange -ne $null)
+    {
+        $extent = $tokenToChange.Extent
+        $tokenText = $extent.Text
+        if ($tokenText[0] -eq '"' -and $tokenText[-1] -eq '"')
+        {
+            # Switch to no quotes
+            $replacement = $tokenText.Substring(1, $tokenText.Length - 2)
+        }
+        elseif ($tokenText[0] -eq "'" -and $tokenText[-1] -eq "'")
+        {
+            # Switch to double quotes
+            $replacement = '"' + $tokenText.Substring(1, $tokenText.Length - 2) + '"'
+        }
+        else
+        {
+            # Add single quotes
+            $replacement = "'" + $tokenText + "'"
+        }
+
+        [Microsoft.PowerShell.PSConsoleReadLine]::Replace(
+            $extent.StartOffset,
+            $tokenText.Length,
+            $replacement)
     }
 }
 
-# convert video of dir using ffmpeg for dumb phone 
-function ffconvert {
-    $input_folder = Read-Host "Enter the input folder containing the videos to convert"
-    $output_folder = Read-Host "Enter the output folder to save the converted videos"
 
-    Get-ChildItem -Path $input_folder -Recurse -Include *.mp4,*.avi,*.mkv | ForEach-Object {
-        $output_file_path = Join-Path $output_folder $_.FullName.Substring($input_folder.Length + 1)
-        $output_file_path = [IO.Path]::ChangeExtension($output_file_path, ".3gp")
-        New-Item -ItemType Directory -Path (Split-Path $output_file_path) -Force | Out-Null
-        $cmd = "ffmpeg -y -i `"$($_.FullName)`" -vf scale=704:576 -c:v h263 -preset veryfast -crf 29 -c:a aac_mf -b:a 128k -ac 2 -ar 44100 `"$output_file_path`""
-        Invoke-Expression $cmd
-    }
-}
-
-function find-file($name) {
-        ls -recurse -filter "*${name}*" -ErrorAction SilentlyContinue | foreach {
-                $place_path = $_.directory
-                echo "${place_path}\${_}"
-        } }
-
+# downlading yt-dlp with 3gp
+##Function yt3gp ($url) { yt-dlp -a "${url}"  -o "%(title)s.%(ext)s" --exec 'ffmpeg -y -i {} -filter:v "scale=704x576" -c:v h263 -c:a aac -b:a 80k -ac 1 -ar 8000 {}.3gp && del /f {}' }
