@@ -36,8 +36,8 @@ window:
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
     position:
-      x: 80
-      y: 39
+      x: 1
+      y: 1
 
   # Window padding (changes require restart)
   #
@@ -65,8 +65,12 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.92
+  opacity: 0.96
 
+  visual:
+  animation: EaseOutExpo
+  duration: 0
+  color: "#ffffff"
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -76,7 +80,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Fullscreen
+  startup_mode: Windowed
 
   # Window title
   title: Alacritty
@@ -520,6 +524,7 @@ mouse_bindings:
 # in the order they were defined in.
 key_bindings:
   - { key: L,         mods: Control,                    action: ClearLogNotice }
+  - { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
  # note use SHIFT + PAGEUP, HOME, END PGDN normally they don't work 
    # Vi Mode # semantic mean it will automatically cover the next word
   - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
@@ -559,7 +564,7 @@ key_bindings:
   - { key: Return, mods: Shift,   mode: Search|~Vi, action: SearchFocusPrevious   }
 
   # (Windows, Linux, and BSD only)
-  - { key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            }
+  # - { key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            }
   - { key: C,              mods: Control|Shift,                   action: Copy             }
   # - { key: C,              mods: Control,                         action: Copy             }
   - { key: F,              mods: Control|Shift, mode: ~Search,    action: SearchForward    }
@@ -567,8 +572,24 @@ key_bindings:
   - { key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   }
 
   # CUSTOMS BY ME 😎
-  - { key: K,      mods: Control|Shift,       mode: ~Vi, action: ScrollLineUp            }
-  - { key: J,      mods: Control|Shift,       mode: ~Vi, action: ScrollLineDown            }
+  - { key: K,      mods: Control|Shift,       mode: ~Vi, action: ScrollLineUp           }
+  - { key: J,      mods: Control|Shift,       mode: ~Vi, action: ScrollLineDown         }
+  - { key: U,      mods: Control|Shift,       mode: ~Vi, action: ScrollHalfPageUp       }
+  - { key: D,      mods: Control|Shift,       mode: ~Vi, action: ScrollHalfPageDown     }
+  - { key: U,      mods: Control|Shift,       mode: ~Vi, action: ScrollHalfPageUp       }
+  - { key: G,      mods: Control|Shift,       mode: ~Vi, action: ScrollToBottom         }
+  - { key: G,      mods: Control,             mode: ~Vi, action: ScrollToTop            }
+  - { key: F,      mods: Control,             mode: ~Vi, action: ScrollHalfPageUp         }
+  - { key: B,      mods: Control,             mode: ~Vi, action: ScrollHalfPageDown         }
+  - { key: N,      mods: Control|Shift,       mode: ~Vi, action: CreateNewWindow       }
+  # - { key: N,      mods: Control|Shift,       mode: ~Vi, action: SpawnNewInstance       }
+  - { key: Return, mods: Alt,                            action: ToggleMaximized        }  
+  - { key: W,      mods: Control|Shift,                  action: Quit                   }
+#   - ScrollHalfPageUp
+#   - ScrollHalfPageDown
+#   - CreateNewWindow
+
+
 debug:
   # Display the time it takes to redraw each frame.
   #render_timer: true
@@ -583,3 +604,6 @@ debug:
   #   - Debug
   #   - Trace
   log_level: Warn
+
+
+
