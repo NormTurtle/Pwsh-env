@@ -8,7 +8,9 @@
 ![image](https://user-images.githubusercontent.com/108952834/197258955-225aea2c-d9c1-4bf2-a754-daf016d55e66.png)
 
  i may upload my nofetch config in future /_\
+
 - install
+
 ```
 Set-ExecutionPolicy Bypass -Scope CurrentUser -Force
 irm https://github.com/omaru-ok/stuff/raw/main/WINDOW_terminal_UwU_0/OMI-window-terminal_conf-install.ps1 | iex
@@ -33,5 +35,3 @@ irm https://github.com/omaru-ok/stuff/raw/main/WINDOW_terminal_UwU_0/OMI-window-
    irm https://github.com/omaru-ok/stuff/raw/main/powershell_conf_install_OwO/Uninstall_OMI-conf.ps1 | iex 
    ```
    note: uninstal is capable of removing everything, which was added, for the only `~/scoop` folder , u have to delet it manualy
-
-
